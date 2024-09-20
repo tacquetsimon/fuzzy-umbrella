@@ -1,0 +1,13 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+type: command
+
+name: register_model
+display_name: "Register Model"
+environment: "azureml://registries/azureml/environments/acpt-pytorch-2.2-cuda12.1/versions/17"
+
+outputs:
+  models:
+    type: triton_model
+
+code: "../register_model"
+command: "python register.py --trained-model=${{outputs.models}}"

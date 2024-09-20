@@ -1,0 +1,20 @@
+## execute as: az ml job create --file azmlpipelinejob_argus_custom_efficientnet_training.yaml --workspace-name row-fl-tst-mlw-digitalops-ai --resource-group row-fl-tst-rg-digitaloperations-ai
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+type: pipeline
+display_name: test model output
+experiment_name: temp
+description: Pipeline to test model output and registration
+settings:
+  default_compute: azureml:vrflmlwt324
+  continue_on_step_failure: false
+
+jobs:
+  argus_efficientnet:
+    type: command
+    component: ./register_model_component.yaml
+    outputs:
+        models: ${{parent.outputs.model}}
+outputs:
+  model:
+    type: triton_model
+    name: triton_register_test_v2
