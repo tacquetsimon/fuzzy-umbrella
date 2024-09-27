@@ -4,7 +4,7 @@ import os
 import mlflow
 import torch
 
-
+# dummy component to register model as a mlflow model type and triton model type
 
 def register_mlflow_pytorch_model(model_path: str):
     with mlflow.start_run() as run:
@@ -19,8 +19,10 @@ def register_mlflow_pytorch_model(model_path: str):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--trained-model", dest="trained_model")
-    
+    print("args parsed")
     args = parser.parse_args()
+
+    print(f"trained model: {args.trained_model}")
     destination = args.trained_model
     
     model_local_path = os.path.abspath("./models")
