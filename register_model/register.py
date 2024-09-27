@@ -14,6 +14,7 @@ def register_mlflow_pytorch_model(model_path: str):
         )
         mlflow.register_model(model_uri=f"runs:/{run.info.run_id}/model_mlflow_test", name="mlflow_test_v2")
 
+
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
