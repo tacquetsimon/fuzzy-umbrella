@@ -11,3 +11,5 @@ outputs:
 
 code: "../register_model"
 command: "python register.py --trained-model=${{outputs.models}}"
+
+is_deterministic: false

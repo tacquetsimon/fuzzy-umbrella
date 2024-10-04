@@ -26,10 +26,11 @@ if __name__ == "__main__":
     destination = args.trained_model
     
     model_local_path = os.path.abspath("./models")
+
     try:
         print(f"copying {model_local_path} into {destination}")
         copytree(src=model_local_path, dst=destination, dirs_exist_ok=True)
-    except:
+    except Exception as e:
         print("Encountered error in copy to output")
     
     print("mlflow logging start")

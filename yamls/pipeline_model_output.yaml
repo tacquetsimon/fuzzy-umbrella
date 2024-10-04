@@ -8,13 +8,16 @@ settings:
   default_compute: azureml:vrflmlwt324
   continue_on_step_failure: false
 
+
+outputs:
+  model:
+    type: triton_model
+    name: DEMO_triton_register_test_pipeline
+
 jobs:
   argus_efficientnet:
     type: command
     component: ./register_model_component.yaml
     outputs:
         models: ${{parent.outputs.model}}
-outputs:
-  model:
-    type: triton_model
-    name: triton_register_test_v3
+
